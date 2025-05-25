@@ -1,0 +1,709 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Smooth Scrolling & Navbar Offset */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px; /* Adjust to your navbar height */
+}
+
+/* Global Styles */
+body {
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    font-size: 16px; /* Base font size */
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(38, 38, 38, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensure navbar is on top */
+    backdrop-filter: blur(10px);
+}
+
+.logo a {
+    font-size: clamp(1.25rem, 4vw, 1.5rem); /* Responsive font size */
+    text-decoration: none;
+    color: #00d1b2;
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #f5f5f5;
+    transition: color 0.3s;
+    font-weight: 600;
+    position: relative;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #00d1b2;
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.assignment-btn {
+    padding: 8px 18px; /* Slightly smaller for nav */
+    border: 2px solid #00d1b2;
+    border-radius: 30px;
+    background-color: transparent;
+    color: #00d1b2;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+}
+
+.assignment-btn:hover {
+    background-color: #00d1b2;
+    color: #1a1a1a;
+}
+
+/* Hamburger Menu Styles */
+.nav-toggle {
+    display: none; /* Hidden by default, shown in media query */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em;
+    z-index: 1001; /* Above nav-links when open */
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 3px;
+    background-color: #f5f5f5;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #f5f5f5;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    bottom: -8px;
+}
+
+.nav-toggle.open .hamburger {
+    transform: rotate(45deg);
+}
+
+.nav-toggle.open .hamburger::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.nav-toggle.open .hamburger::after {
+    bottom: 0;
+    transform: rotate(90deg);
+    opacity: 0; /* Hide one bar to form X */
+}
+
+
+/* Section Base Styles */
+section {
+    padding: 100px 5% 60px; /* Default padding */
+    min-height: 100vh; /* Keep sections full height */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex; /* For centering content in some cases */
+    flex-direction: column;
+    justify-content: center; /* Vertically center content within section */
+}
+section:last-child {
+    border-bottom: none;
+}
+
+
+/* Home Section (#home) */
+#home {
+display: flex;
+flex-direction: row; /* Default for larger screens */
+align-items: center;
+justify-content: space-between;
+padding-top: 150px; /* More space for fixed nav */
+padding-bottom: 40px;
+}
+
+.hero-text {
+    max-width: 600px;
+    animation: slideInLeft 1s ease;
+    flex: 1 1 55%; /* Flex properties for layout */
+}
+
+.hero-subheading {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    margin-bottom: 0.5rem; /* Adjusted margin */
+    color: #aaa;
+}
+
+.hero-main-heading {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+    margin: 0.5rem 0; /* Adjusted margin */
+    color: #fff;
+    line-height: 1.1;
+}
+
+.hero-role {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    color: #00d1b2;
+    margin-bottom: 1.5rem; /* Adjusted margin */
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 15px; /* Reduced gap */
+    margin-top: 1.5rem; /* Adjusted margin */
+}
+
+.social-links a {
+    color: #f5f5f5;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px; /* Adjusted padding */
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.05);
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+}
+
+.social-links a:hover {
+    background-color: #00d1b2;
+    color: #1a1a1a;
+}
+
+.hero-image-container {
+    animation: slideInRight 1s ease;
+    flex: 1 1 40%; /* Flex properties for layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image-actual {
+    max-height: 500px; /* Original max-height */
+    width: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure it doesn't overflow container */
+    transition: transform 0.3s;
+}
+.hero-image-actual:hover {
+    transform: translateY(-5px);
+}
+
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* About Section (#about) */
+.about-section {
+    padding-top: 120px; /* Adjust for nav */
+    padding-bottom: 100px;
+}
+
+.about-container {
+    max-width: 1200px;
+    width: 100%; /* Ensure it takes up available space for margin auto to work */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    align-items: center; /* Align items vertically */
+}
+
+.about-heading {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-heading h1 {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.about-heading h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #00d1b2;
+}
+
+.about-heading h1 span {
+    color: #00d1b2;
+}
+
+.about-heading p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #aaa;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: clamp(250px, 40vw, 400px); /* Responsive width */
+    height: clamp(250px, 40vw, 400px);/* Responsive height */
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0, 209, 178, 0.3);
+    transition: transform 0.3s;
+    border: 3px solid #00d1b2;
+    object-fit: cover; /* Ensure image covers the circle */
+}
+
+.about-image img:hover {
+    transform: translateY(-5px);
+}
+
+.about-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: clamp(1.5rem, 4vw, 2rem); /* Responsive padding */
+    border-radius: 15px;
+    border: 1px solid rgba(0, 209, 178, 0.3);
+}
+
+.about-info h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 1rem;
+    color: #00d1b2;
+}
+
+.about-info p {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    color: #ddd;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.personal-details {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    margin-bottom: 2rem;
+}
+
+.personal-details li {
+    list-style: none;
+    margin-bottom: 0.8rem;
+    color: #ccc;
+}
+
+.download-cv-btn {
+    background-color: #00d1b2;
+    color: #1a1a1a;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.download-cv-btn:hover {
+    background-color: #00b89c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 209, 178, 0.3);
+}
+
+/* Common Styles for Week/Assignment Sections (using .Hero class) */
+.Hero {
+    padding-top: 120px; /* Adjust for nav */
+    padding-bottom: 100px;
+}
+
+.hero-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.hero-content > h1 { /* Main title for Week/Assignment sections */
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.hero-content > h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #00d1b2;
+}
+
+.hero-content > p { /* General paragraph style within .hero-content */
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+/* Common Content Card Styles */
+.content-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: clamp(1.5rem, 4vw, 2rem);
+    border-radius: 15px;
+    margin: 2rem 0;
+    border: 1px solid rgba(0, 209, 178, 0.3);
+}
+
+.content-card h2 {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    margin-bottom: 1.5rem;
+    color: #00d1b2;
+    position: relative;
+}
+
+.content-card h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #00d1b2;
+}
+
+.learning-outcomes {
+    list-style: none;
+    padding-left: 0; /* Remove default padding */
+}
+
+.learning-outcomes li {
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+    background: rgba(0, 209, 178, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #00d1b2;
+    color: #ddd;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.learning-outcomes strong {
+    color: #00d1b2;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Specifics for Week 1 & 2 (Video) */
+.video-container {
+    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    padding: clamp(1rem, 3vw, 2rem);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 209, 178, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 209, 178, 0.1);
+}
+
+video { /* Already has max-width: 100% */
+    border-radius: 10px;
+    transition: transform 0.3s;
+    width: 100%; /* Ensure it fills container */
+}
+
+video:hover {
+    transform: translateY(-3px);
+}
+
+/* Specifics for Week 3 (Text Content) */
+.text-content {
+    background: rgba(255, 255, 255, 0.05);
+    padding: clamp(1.5rem, 4vw, 2rem);
+    border-radius: 15px;
+    margin: 2rem 0;
+    border: 1px solid rgba(0, 209, 178, 0.3);
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.6;
+    color: #ddd;
+}
+
+/* Specifics for Week 4 (Resume Link) */
+.resume-link {
+    color: #00d1b2;
+    text-decoration: none;
+    padding: 12px 24px;
+    border: 2px solid #00d1b2;
+    border-radius: 30px;
+    transition: all 0.3s;
+    display: inline-block;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.resume-link:hover {
+    background-color: #00d1b2;
+    color: #1a1a1a;
+    transform: translateY(-2px);
+}
+
+/* Specifics for Assignment Section */
+.assignment-content ol {
+    margin-left: 1.5rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    padding-left: 1rem; /* Ensure list items are not cut off */
+}
+
+.assignment-content li {
+    margin-bottom: 1.2rem;
+    color: #ddd;
+}
+
+.answers {
+    margin-top: 2rem;
+}
+
+.answers p {
+    margin-bottom: 1.5rem;
+    color: #ddd;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.answers blockquote {
+    margin: 1.5rem 0 1.5rem 1rem; /* Adjusted margin */
+    padding-left: 1.5rem;
+    border-left: 3px solid #00d1b2;
+    color: #ccc;
+    font-style: italic;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+
+/* Responsive Design - Mobile First Approach (Styles outside media queries are for all sizes) */
+
+/* Tablet and Larger (Example: > 768px) */
+@media (min-width: 769px) {
+    /* Styles for tablet and desktop, if any specific overrides needed from mobile-first approach */
+    /* Most desktop styles are already defined above */
+}
+
+
+/* Mobile Specific Adjustments (Max-width 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px; /* Slightly smaller base for mobile */
+    }
+
+    .nav-toggle {
+        display: block; /* Show hamburger */
+    }
+
+    .nav-links {
+        position: fixed;
+        background-color: rgba(28, 28, 28, 0.98); /* Darker, more solid bg for mobile nav */
+        backdrop-filter: blur(5px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem 0;
+        top: 70px; /* Below navbar */
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 70px); /* Full height minus navbar */
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999; /* Below navbar toggle but above content */
+    }
+
+    .nav-links.nav-open {
+        transform: translateX(0);
+    }
+
+    .nav-links li a {
+        font-size: 1.2rem; /* Larger tap targets for mobile nav */
+    }
+    .nav-links li a::after{
+        bottom: -3px;
+    }
+    .assignment-btn {
+        font-size: 1.1rem;
+        padding: 10px 22px;
+    }
+
+    section {
+        padding: 80px 5% 40px;
+        min-height: auto; /* Allow sections to shrink if content is small */
+    }
+
+    #home {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 100px; /* Adjust for fixed nav and ensure content visible */
+    }
+    .hero-text {
+        order: 2; /* Text below image on mobile */
+        margin-top: 2rem;
+    }
+    .hero-image-container {
+        order: 1; /* Image above text on mobile */
+        width: 70%; /* Control image size on mobile */
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .hero-image-actual {
+        max-height: 300px; /* Adjust hero image size for mobile */
+    }
+    .social-links {
+        justify-content: center; /* Center social links */
+    }
+
+    .about-section {
+        padding-top: 100px;
+    }
+    .about-container {
+        grid-template-columns: 1fr; /* Stack elements */
+        gap: 30px;
+    }
+    .about-image img {
+        width: clamp(200px, 60vw, 280px); /* Adjust about image size */
+        height: clamp(200px, 60vw, 280px);
+    }
+    .about-info {
+        text-align: center; /* Center text in info box */
+    }
+    .download-cv-btn {
+        margin: 1rem auto 0; /* Center button */
+    }
+
+    .Hero { /* Week sections */
+        padding-top: 100px;
+    }
+    .hero-content > h1 { /* Titles in week sections */
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+        text-align: center;
+    }
+    .hero-content > h1::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .hero-content > p {
+        text-align: center;
+    }
+
+    .content-card {
+        padding: 1.5rem;
+    }
+    .content-card h2 {
+        text-align: center;
+    }
+    .content-card h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .learning-outcomes li {
+        font-size: 0.9rem;
+    }
+    .assignment-content ol {
+        padding-left: 20px; /* Ensure bullet points visible */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    .logo a {
+        font-size: 1.1rem;
+    }
+    section {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .hero-main-heading {
+        font-size: clamp(2rem, 10vw, 2.5rem);
+    }
+    .hero-role {
+        font-size: clamp(1.3rem, 7vw, 1.7rem);
+    }
+    .social-links a {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+    .about-heading h1 {
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+    }
+    .about-heading p {
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+}
